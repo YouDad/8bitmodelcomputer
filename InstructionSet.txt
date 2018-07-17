@@ -1,0 +1,55 @@
+instruction	param_explan			qwerasdf
+mov ix,@i7	mov ix,abcdefg			1abcdefg	把abcdefg送入立即数寄存器ix
+mov @r,@r	mov sss,ddd				01sssddd	把ddd号寄存器放入sss号寄存器
+jmp cs:px	jmp cs:px				00100000	跳到cs段的px
+jmp ax:px	jmp ax:px				00100001	跳到ax段的px
+jc cs:px		jc cs:px					00100010	如果cf=1,跳到cs段的px
+stos			mov ds:[si],dx			00100011	把dx送给内存的ds段的si
+jz cs:px		jz cs:px					00100100	如果zf=1,跳到cs段的px
+j				j							00100101	把栈顶送给xf用于判断
+js cs:px		js cs:px					00100110	如果sf=1,跳到cs段的px
+jodd cs:px	jodd cs:px				00100111	如果是奇数,跳到cs段的px
+push @r		pushsss					00101sss	把sss号寄存器压栈
+pop @r		pop sss					00110sss	把sss号寄存器弹栈
+inc @r		inc sss					00111sss	sss号寄存器++
+dec @r		dec sss					00011sss	sss号寄存器--
+out sss		out sss 					00010sss	把dx的内容输出到sss号输出设备里
+xor ax,px	xor ax,px				00001111	ax ^= px
+mode			mode						00001110	切换rom/ram模式
+shl ax,1		shl ax,1					00001101	ax <<= 1
+or ax,px		or ax,px					00001100	ax |= px
+lods			mov dx,ds:[si]			00001011	把内存的ds段的si送给dx
+shr ax,1		shr ax,1					00001010	ax >>= 1
+wait			wait						00001001 进入等待状态,如果输入设备状态发生变化,将结果存入ax
+and ax,px	and ax,px				00001000	ax &= px
+in ss			in ss						000001ss	读入ss号输入设备的状态
+jz ax:px		jz ax:px					00000010 如果zf=1,跳到ax段的px
+reset			reset						00000011	把状态寄存器设为11111111
+add ax,px	add ax,px				00000001	ax += px
+delay			delay						00000000	延时dx个毫秒
+
+alu:
+1111:equ 
+0000:inc
+0001:dec
+0010:add
+0111:or
+1000:xor
+1001:and
+1010:shl
+1011:shr
+
+reg:
+000:ax	001:px
+010:ds	011:dx
+100:cs	101:ip
+110:si	111:ix
+
+in:
+00:key0	01:key1
+10:key2	11:key3
+
+out:
+000:cs0		001:cs1
+010:cs2		011:cs3
+100:cs4		101:cs5

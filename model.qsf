@@ -1,0 +1,147 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions
+# and other software and tools, and its AMPP partner logic
+# functions, and any output files from any of the foregoing
+# (including device programming or simulation files), and any
+# associated documentation or information are expressly subject
+# to the terms and conditions of the Intel Program License
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+# Date created = 18:02:28  July  03, 2018
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		uart_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE6F17C8
+set_global_assignment -name TOP_LEVEL_ENTITY buzzer_controller
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:02:28  JULY  03, 2018"
+set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0 
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+
+set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT NONE -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH model_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME model_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id model_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME model_tb -section_id model_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE model.bdf -section_id model_tb
+set_location_assignment PIN_E1 -to clk
+set_location_assignment PIN_N13 -to KEY0
+set_location_assignment PIN_M15 -to KEY1
+set_location_assignment PIN_M16 -to KEY2
+set_location_assignment PIN_E16 -to KEY3
+set_location_assignment PIN_R16 -to NUM[0]
+set_location_assignment PIN_N15 -to NUM[1]
+set_location_assignment PIN_N12 -to NUM[2]
+set_location_assignment PIN_P15 -to NUM[3]
+set_location_assignment PIN_T15 -to NUM[4]
+set_location_assignment PIN_P16 -to NUM[5]
+set_location_assignment PIN_N16 -to NUM[6]
+set_location_assignment PIN_R14 -to NUM[7]
+set_location_assignment PIN_M11 -to SEL[0]
+set_location_assignment PIN_P11 -to SEL[1]
+set_location_assignment PIN_N11 -to SEL[2]
+set_location_assignment PIN_M10 -to SEL[3]
+set_location_assignment PIN_P9 -to SEL[4]
+set_location_assignment PIN_N9 -to SEL[5]
+set_location_assignment PIN_C11 -to buzzer
+set_location_assignment PIN_E10 -to romled
+set_location_assignment PIN_F9 -to led[0]
+set_location_assignment PIN_C9 -to led[1]
+set_location_assignment PIN_D9 -to led[2]
+set_global_assignment -name VHDL_FILE component/antishake.vhd
+set_global_assignment -name VHDL_FILE component/led_decoder.vhd
+set_global_assignment -name VHDL_FILE component/dreg.vhd
+set_global_assignment -name TEXT_FILE InstructionSet.txt
+set_global_assignment -name VHDL_FILE alu.vhd
+set_global_assignment -name VHDL_FILE beater.vhd
+set_global_assignment -name VHDL_FILE buzzer_controller.vhd
+set_global_assignment -name VHDL_FILE controller.vhd
+set_global_assignment -name VHDL_FILE delayer.vhd
+set_global_assignment -name VHDL_FILE memory.vhd
+set_global_assignment -name BDF_FILE model.bdf
+set_global_assignment -name VHDL_FILE rom.vhd
+set_global_assignment -name VHDL_FILE stack.vhd
+set_global_assignment -name VHDL_FILE num_scan.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE test_antishake.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE test_beater.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE test.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE test_alu.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE test_stack.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE test_led_decoder.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE test_dreg.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE test_buzzer_controller.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE test_memory.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE test_rom.vwf
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name VIRTUAL_PIN ON -to DBUS
+set_instance_assignment -name VIRTUAL_PIN ON -to instruction
+set_instance_assignment -name VIRTUAL_PIN ON -to ramC
+set_instance_assignment -name VIRTUAL_PIN ON -to ramL
+set_instance_assignment -name VIRTUAL_PIN OFF -to jmp
+set_instance_assignment -name VIRTUAL_PIN OFF -to ODD
+set_instance_assignment -name VIRTUAL_PIN OFF -to push
+set_instance_assignment -name VIRTUAL_PIN OFF -to ram
+set_instance_assignment -name VIRTUAL_PIN OFF -to ramrw
+set_instance_assignment -name VIRTUAL_PIN OFF -to rom
+set_instance_assignment -name VIRTUAL_PIN OFF -to SF
+set_instance_assignment -name VIRTUAL_PIN OFF -to stack
+set_instance_assignment -name VIRTUAL_PIN OFF -to ZF
+set_instance_assignment -name VIRTUAL_PIN ON -to beat
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_AX
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_BX
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_CS
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_DS
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_DX
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_IP
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_IX
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_SI
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_SX
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_XF
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_XS
+set_instance_assignment -name VIRTUAL_PIN ON -to romC
+set_instance_assignment -name VIRTUAL_PIN ON -to romL
+set_instance_assignment -name VIRTUAL_PIN ON -to S
+set_instance_assignment -name VIRTUAL_PIN ON -to state
+set_instance_assignment -name VIRTUAL_PIN OFF -to CF
+set_instance_assignment -name VIRTUAL_PIN ON -to dig1
+set_instance_assignment -name VIRTUAL_PIN ON -to dig2
+set_instance_assignment -name VIRTUAL_PIN ON -to dig3
+set_instance_assignment -name VIRTUAL_PIN ON -to dig4
+set_instance_assignment -name VIRTUAL_PIN ON -to dig5
+set_instance_assignment -name VIRTUAL_PIN ON -to dig0
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

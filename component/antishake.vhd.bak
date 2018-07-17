@@ -1,0 +1,74 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity antishake is
+	port(
+		clk:in std_logic;
+		src0,src1,src2,src3:in std_logic;
+		dest0,dest1,dest2,dest3:out std_logic
+	);
+end;
+
+architecture bhv of antishake is
+begin
+	process(clk,src0)
+	variable last:std_logic;
+	variable cnt:integer range 0 to 25000;
+	begin
+		if(falling_edge(clk))then
+			if(last/=src0)then
+				last:=src0;
+				cnt:=1;
+			elsif(cnt=25000 and last=src0)then
+				dest0<=src0;
+			else
+				cnt:=cnt+1;
+			end if;
+		end if;
+	end process;
+	process(clk,src1)
+	variable last:std_logic;
+	variable cnt:integer range 0 to 25000;
+	begin
+		if(falling_edge(clk))then
+			if(last/=src1)then
+				last:=src1;
+				cnt:=1;
+			elsif(cnt=25000 and last=src1)then
+				dest1<=src1;
+			else
+				cnt:=cnt+1;
+			end if;
+		end if;
+	end process;
+	process(clk,src2)
+	variable last:std_logic;
+	variable cnt:integer range 0 to 25000;
+	begin
+		if(falling_edge(clk))then
+			if(last/=src2)then
+				last:=src2;
+				cnt:=1;
+			elsif(cnt=25000 and last=src2)then
+				dest2<=src2;
+			else
+				cnt:=cnt+1;
+			end if;
+		end if;
+	end process;
+	process(clk,src3)
+	variable last:std_logic;
+	variable cnt:integer range 0 to 25000;
+	begin
+		if(falling_edge(clk))then
+			if(last/=src3)then
+				last:=src3;
+				cnt:=1;
+			elsif(cnt=25000 and last=src3)then
+				dest3<=src3;
+			else
+				cnt:=cnt+1;
+			end if;
+		end if;
+	end process;
+end;

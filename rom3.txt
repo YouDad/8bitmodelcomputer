@@ -1,0 +1,175 @@
+rom3:0->:
+mov ds,ax
+mov ix,0
+mov si,ix
+mov ix,127
+inc ix
+mov px,ix
+mov ix,127
+mov ax,ix
+add ax,px
+mov dx,ax
+stos
+inc si
+mov ix,71
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,13
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,13
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,13
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,72
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,4
+mov ax,ix
+add ax,px
+mov dx,ax
+stos
+inc si
+mov ix,71
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,1
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,88
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,22
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,0
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,27
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,27
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,22
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,0
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,27
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,22
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,0
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,27
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,22
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,0
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,23
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,14
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,0
+mov ds,ix
+mov si,ix
+mov ix,3
+mov ax,ix
+add ax,px
+mov dx,ax
+stos
+inc si
+mov ix,71
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,79
+mov ax,ix
+mov dx,ax
+stos
+inc si
+mov ix,33
+mov ax,ix
+mov dx,ax
+stos
+mov ix,0
+mov ds,ix
+mov si,ix
+mov dx,ix
+out 5
+out 4
+out 3
+out 2
+out 1
+out 0
+inc si
+mov ix,0
+mov ax,ix
+mov ix,15
+mov px,ix
+jmp ax:px
+end
+
+rom3:253->:
+mov ix,0
+mov px,ix
+jmp cs:px
+end

@@ -1,0 +1,284 @@
+1:02o o=0 op 2 op=0A
+第1段的代码是算数指令
+第0和2条指令送的立即数是第一和第二操作数
+第10条指令是操作符
+允许的有:
+add:00000001
+xor:00001111
+or :00001100
+and:00001000
+mov ix,1
+mov dx,ix
+mov ix,2
+out 5
+out 4
+mov ax,dx
+mov dx,ix
+out 3
+out 2
+mov px,dx
+add ax,px
+mov dx,ax
+out 1
+out 0
+mode
+
+10000001
+01011111
+10000010
+00010101
+00010100
+01000011
+01011111
+00010011
+00010010
+01001011
+00000001
+01011000
+00010001
+00010000
+00001110
+
+2:0o o=op 0 op=09
+第2段的代码是单操作数算数指令
+第0条指令送的是操作数
+第2条指令送的是中间的分隔符
+第9条指令是操作符
+允许的有:
+inc ax:00111000
+dec ax:00011000
+shl ax:00001101
+shr ax:00001010
+mov ix,1
+mov dx,ix
+mov ix,0
+out 5
+out 4
+mov ax,dx
+mov dx,ix
+out 3
+out 2
+inc ax
+mov dx,ax
+out 1
+out 0
+mode
+
+10000001
+01011111
+10000000
+00010101
+00010100
+01000011
+01011111
+00010011
+00010010
+00111000
+01011000
+00010001
+00010000
+00001110
+
+3:led
+3个led的控制
+mov ix,127
+mov ax,ix   ;ax=01111111
+shl ax,1    ;ax=11111110
+shl ax,1    ;ax=11111100
+shl ax,1    ;ax=11111000
+mov px,ax   ;px=11111000
+mov ix,4
+mov ax,ix
+add ax,px
+mov dx,ax
+out 6
+delay
+dec dx
+dec dx
+out 6
+delay
+dec dx
+out 6
+delay
+dec dx
+out 6
+mode
+
+11111111
+01000111
+00001101
+00001101
+00001101
+01001000
+10000100
+01000111
+00000001
+01011000
+00010110
+00000000
+00011011
+00011011
+00010110
+00000000
+00011011
+00010110
+00000000
+00011011
+00010110
+00001110
+
+FF
+47
+0D
+0D
+0D
+48
+84
+47s
+01
+58
+16
+00
+1B
+1B
+16
+00
+1B
+16
+00
+1B
+16
+0E
+
+4:music
+mov ix,32
+mov ax,ix
+mov ix,0
+mov dx,ix
+dec dx
+out 7
+delay
+inc ax
+mov ix,60
+mov px,ix
+xor ax,px
+mov ix,20
+mov px,ix
+jz cs:px
+mov ix,60
+mov px,ix
+xor ax,px
+mov ix,6
+mov px,ix
+jmp cs:px
+out 7
+mode
+
+10100000
+01000111
+10000000
+01011111
+00011011
+00010111
+00000000
+00111000
+10111100
+01001111
+00001111
+10010100
+01001111
+00100100
+10111100
+01001111
+00001111
+10000110
+01001111
+00100000
+00010111
+00001110
+
+5:play music hop
+music默认从6段开始如果是全0则终止
+6:0->一分钟多少拍
+6:1->升/降调
+然后依次读出播放
+dx:ax联合寄存器:19,136
+            mov ix,9
+            mov ax,ix
+            mov ix,127
+            mov px,ix
+            add ax,px
+            push ax     ;栈顶136
+            mov ix,6
+            mov ds,ix
+            mov ix,0
+            mov si,ix
+            lods
+            mov ax,dx
+            dec ix
+            mov px,ix   ;px=255
+            xor ax,px
+            inc ax
+            mov px,ax   ;px=-ds:[si]
+            mov ix,19
+            mov dx,ix   ;dx=19
+            pop ax      ;ax=136
+            mov ix,0
+            push px
+            push ix
+div_start:  pop ix
+            pop px
+            add ax,px
+            inc ix
+            push px
+            push ix
+            mov ix,$div_nop
+            mov px,ix
+            jc cs:px
+            dec dx
+div_nop:    push dx
+            j
+            mov ix,$div_ok
+            mov px,ix
+            jz cs:px
+            mov ix,$div_start
+            mov px,ix
+            jmp cs:px
+div_ok:     pop ix
+            pop px
+            push ix
+            inc si
+            lods
+            mov ax,dx
+            pop dx
+loop:       push dx
+            inc si
+            jc ds_inc
+return:     lods
+            push dx
+            j
+            push ax
+            mov ax,dx
+            mov ix,31
+            mov px,ix
+            xor ax,px
+            mov ix,$over
+            mov px,ix
+            jz cs:px
+            pop ax
+            mov ix,ax
+            mov ax,dx
+            mov px,ix
+            add ax,px
+            pop dx
+            jc cs:px
+            delay
+            mov ax,ix
+            mov ix,$loop
+            mov px,ix
+            jmp cs:px
+ds_inc:     inc ds
+            mov ix,$return
+            mov px,ix
+            jmp cs:px
+over:       mode

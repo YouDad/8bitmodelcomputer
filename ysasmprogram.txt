@@ -1,0 +1,143 @@
+rom0:0->:
+            wait            ;>-----------
+            wait
+            wait            ;   按键缓冲
+            wait
+            reset           ;-----------<
+            mov ix,0        ;>-----------
+            mov ds,ix
+            mov si,ix
+            mov dx,ix
+            out 5
+            out 4           ;初始化ds:si,dx和数码管
+            out 3
+            out 2
+            out 1
+            out 0           ;-----------<
+start:      wait            ;读入按键
+            in 1            ;-------
+            mov ix,$cs      ;按了cs键
+            mov px,ix
+            jz cs:px        ;-------
+            in 2            ;-------
+            mov ix,$ip      ;按了ip键
+            mov px,ix
+            jz cs:px        ;-------
+            in 3            ;-------
+            mov ix,$val     ;按了val键
+            mov px,ix
+            jz cs:px        ;-------
+            mov ix,$start   ;没按
+            mov px,ix
+            jmp cs:px       ;-------
+cs:         in 2            ;按了cs和ip键么?
+            mov ix,1
+            mov ax,ix
+            mov ix,0
+            mov px,ix
+            jz ax:px        ;连按的话去1段0号单元执行
+            in 3            ;按了cs和val键么?
+            mov ix,$load
+            mov px,ix
+            jz cs:px
+cs_continue:in 0
+            mov ix,$cs_dec
+            mov px,ix
+            jz cs:px
+            inc ds
+            mov ax,ds
+            mov ix,8
+            mov px,ix
+            and ax,px
+            mov ix,$_not8
+            mov px,ix
+            jz cs:px
+            mov ix,0
+            mov ds,ix
+_not8:      mov dx,ds
+            out 5
+            out 4
+            lods
+            out 1
+            out 0
+            mov ix,$start
+            mov px,ix
+            jmp cs:px
+cs_dec:     push ds
+            j
+            mov ix,$_255
+            mov px,ix
+            jz cs:px
+            mov ix,$_not255
+            mov px,ix
+            jmp cs:px
+_255:       mov ix,8
+            mov ds,ix
+_not255:    dec ds
+            mov dx,ds
+            out 5
+            out 4
+            lods
+            out 1
+            out 0
+            mov ix,$start
+            mov px,ix
+            jmp cs:px
+ip:         in 1
+            mov ix,1
+            mov ax,ix
+            mov ix,0
+            mov px,ix
+            jz ax:px
+            in 0
+            mov ix,$ip_dec
+            mov px,ix
+            jz cs:px
+            inc si
+            inc si
+ip_dec:     dec si
+            mov dx,si
+            out 3
+            out 2
+            lods
+            out 1
+            out 0
+            mov ix,$start
+            mov px,ix
+            jmp cs:px
+val:        mov ax,dx
+            shl ax,1
+            in 0
+            mov ix,$_0
+            mov px,ix
+            jz cs:px
+            inc ax
+_0:         mov dx,ax
+            stos
+            out 1
+            out 0
+            mov ix,$start
+            mov px,ix
+            jmp cs:px
+load:       mov ix,0        ;ix=0
+            mov ds,ix       ;ds=0
+            dec ix          ;ix=255
+            mov si,ix       ;si=255
+            lods            ;dx=ds:[si]
+            mov ax,dx       ;ax=dx
+            mov ix,7        ;
+            mov px,ix       ;px=00000111
+            and ax,px       ;ax=dx的低3位(0~7)
+            mov ix,0        ;ix=0
+            dec ix          ;ix=255
+            dec ix          ;ix=254
+            dec ix          ;ix=253
+            mov px,ix       ;px=253
+            jmp ax:px       ;先跳往RAM 0段的255号单元的内容所指的段的第253条指令
+end
+
+rom0:253->:
+            mov ix,41       ;0101001
+            mov px,ix
+            jmp cs:px
+end
