@@ -1,5 +1,4 @@
-1:02o o=0 op 2 op=0A
-第1段的代码是算数指令
+﻿1:第1段的代码是算数指令
 第0和2条指令送的立即数是第一和第二操作数
 第10条指令是操作符
 允许的有:
@@ -7,9 +6,9 @@ add:00000001
 xor:00001111
 or :00001100
 and:00001000
-mov ix,1
+mov ix,1-------
 mov dx,ix
-mov ix,2
+mov ix,2-------
 out 5
 out 4
 mov ax,dx
@@ -17,7 +16,7 @@ mov dx,ix
 out 3
 out 2
 mov px,dx
-add ax,px
+add ax,px------
 mov dx,ax
 out 1
 out 0
@@ -39,8 +38,7 @@ mode
 00010000
 00001110
 
-2:0o o=op 0 op=09
-第2段的代码是单操作数算数指令
+2:第2段的代码是单操作数算数指令
 第0条指令送的是操作数
 第2条指令送的是中间的分隔符
 第9条指令是操作符
@@ -49,7 +47,7 @@ inc ax:00111000
 dec ax:00011000
 shl ax:00001101
 shr ax:00001010
-mov ix,1
+mov ix,1--------
 mov dx,ix
 mov ix,0
 out 5
@@ -58,7 +56,7 @@ mov ax,dx
 mov dx,ix
 out 3
 out 2
-inc ax
+inc ax----------
 mov dx,ax
 out 1
 out 0
@@ -134,7 +132,7 @@ FF
 0D
 48
 84
-47s
+47
 01
 58
 16

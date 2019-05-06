@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE6F17C8
-set_global_assignment -name TOP_LEVEL_ENTITY buzzer_controller
+set_global_assignment -name TOP_LEVEL_ENTITY model
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:02:28  JULY  03, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
@@ -109,39 +109,39 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name VIRTUAL_PIN ON -to DBUS
-set_instance_assignment -name VIRTUAL_PIN ON -to instruction
-set_instance_assignment -name VIRTUAL_PIN ON -to ramC
-set_instance_assignment -name VIRTUAL_PIN ON -to ramL
-set_instance_assignment -name VIRTUAL_PIN OFF -to jmp
-set_instance_assignment -name VIRTUAL_PIN OFF -to ODD
-set_instance_assignment -name VIRTUAL_PIN OFF -to push
-set_instance_assignment -name VIRTUAL_PIN OFF -to ram
-set_instance_assignment -name VIRTUAL_PIN OFF -to ramrw
-set_instance_assignment -name VIRTUAL_PIN OFF -to rom
-set_instance_assignment -name VIRTUAL_PIN OFF -to SF
-set_instance_assignment -name VIRTUAL_PIN OFF -to stack
-set_instance_assignment -name VIRTUAL_PIN OFF -to ZF
-set_instance_assignment -name VIRTUAL_PIN ON -to beat
-set_instance_assignment -name VIRTUAL_PIN ON -to REG_AX
-set_instance_assignment -name VIRTUAL_PIN ON -to REG_BX
+set_instance_assignment -name VIRTUAL_PIN ON -to instruction -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to ramC -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to ramL -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to jmp -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to ODD -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to push -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to ram -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to ramrw -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to rom -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to SF -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to stack -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to ZF -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to beat -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_AX -disable
 set_instance_assignment -name VIRTUAL_PIN ON -to REG_CS
-set_instance_assignment -name VIRTUAL_PIN ON -to REG_DS
-set_instance_assignment -name VIRTUAL_PIN ON -to REG_DX
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_DS -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_DX -disable
 set_instance_assignment -name VIRTUAL_PIN ON -to REG_IP
-set_instance_assignment -name VIRTUAL_PIN ON -to REG_IX
-set_instance_assignment -name VIRTUAL_PIN ON -to REG_SI
-set_instance_assignment -name VIRTUAL_PIN ON -to REG_SX
-set_instance_assignment -name VIRTUAL_PIN ON -to REG_XF
-set_instance_assignment -name VIRTUAL_PIN ON -to REG_XS
-set_instance_assignment -name VIRTUAL_PIN ON -to romC
-set_instance_assignment -name VIRTUAL_PIN ON -to romL
-set_instance_assignment -name VIRTUAL_PIN ON -to S
-set_instance_assignment -name VIRTUAL_PIN ON -to state
-set_instance_assignment -name VIRTUAL_PIN OFF -to CF
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_IX -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_SI -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_SX -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_XF -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_XS -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to romC -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to romL -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to S -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to state -disable
+set_instance_assignment -name VIRTUAL_PIN ON -to CF -disable
 set_instance_assignment -name VIRTUAL_PIN ON -to dig1
 set_instance_assignment -name VIRTUAL_PIN ON -to dig2
 set_instance_assignment -name VIRTUAL_PIN ON -to dig3
 set_instance_assignment -name VIRTUAL_PIN ON -to dig4
 set_instance_assignment -name VIRTUAL_PIN ON -to dig5
 set_instance_assignment -name VIRTUAL_PIN ON -to dig0
+set_instance_assignment -name VIRTUAL_PIN ON -to REG_PX -disable
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
